@@ -1,0 +1,34 @@
+شاهین موتور - پچ ثبت‌نام دقیق + OTP + کد ملی + کارت ملی + آمادگی Google Login
+
+مراحل نصب:
+1) از پروژه فعلی بکاپ بگیرید.
+2) فایل‌های داخل این zip را روی ریشه پروژه کپی و replace کنید.
+3) وابستگی‌ها را نصب کنید:
+   pip install -r requirements.txt
+4) مایگریشن را اجرا کنید:
+   python manage.py migrate
+5) پروژه را اجرا کنید:
+   python manage.py runserver
+
+اگر می‌خواهید Google Login فعال شود:
+- بعد از نصب django-allauth، در Google Cloud یک OAuth Client بسازید.
+- Redirect URI لوکال:
+  http://127.0.0.1:8000/accounts/google/login/callback/
+- Redirect URI پروداکشن:
+  https://YOUR-DOMAIN/accounts/google/login/callback/
+- سپس در Django Admin > Sites دامنه را تنظیم کنید.
+- بعد در Admin > Social Applications یک SocialApp برای Google ثبت کنید.
+
+اگر می‌خواهید پیامک واقعاً ارسال شود:
+- به‌صورت پیش‌فرض روی console است و کد OTP در لاگ و پیام موفقیت debug نشان داده می‌شود.
+- برای اتصال به سرویس پیامکی خودتان این envها را تنظیم کنید:
+  SMS_BACKEND=http-json
+  SMS_HTTP_ENDPOINT=https://YOUR-SMS-ENDPOINT
+  SMS_HTTP_TOKEN=YOUR_TOKEN
+  SMS_SENDER=YOUR_SENDER
+
+نکات:
+- ثبت‌نام الان 2 مرحله‌ای شده: ثبت فرم -> ارسال OTP -> تایید OTP -> ساخت کاربر.
+- کد ملی با الگوریتم استاندارد ایران اعتبارسنجی می‌شود.
+- خرید اقساطی فقط وقتی مجاز است که موبایل تاییدشده + کد ملی + تصویر کارت ملی در پروفایل وجود داشته باشد.
+- سیگنال CRM اصلاح شده تا ساخت Customer باعث fail شدن ثبت‌نام نشود.

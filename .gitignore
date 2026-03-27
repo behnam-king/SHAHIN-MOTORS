@@ -1,51 +1,28 @@
-# Python
+# Python / Django
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+*.pyo
+*.pyd
+*.sqlite3
+.pytest_cache/
+.mypy_cache/
 
-# Virtual Environment
+# Virtual environments
+.venv/
 venv/
 env/
-ENV/
-.venv
 
-# Django
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-/media
-/staticfiles
+# Environment files
+.env
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Build and collected assets
+staticfiles/
 
-# OS
+# Uploaded media local artifacts (optional for production with object storage)
+media/
+
+# OS/editor
 .DS_Store
 Thumbs.db
-
-# Environment
-.env
-.env.local
-
+.idea/
+.vscode/
